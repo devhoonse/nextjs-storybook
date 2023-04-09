@@ -1,15 +1,17 @@
 import React from 'react';
+import type {CSSProperties} from 'react';
+import {Button} from "@mui/material";
 import './index.css';
 
 interface SampleButtonProps {
   /**
-   * Is this the principal call to action on the page?
+   * 버튼에 어떤 컬러 테마를 사용하시겠습니까?
    */
-  primary?: boolean;
+  color?: 'primary' | 'secondary';
   /**
    * What background color to use
    */
-  backgroundColor?: string;
+  backgroundColor?: CSSProperties['backgroundColor'];
   /**
    * How large should the button be?
    */
@@ -28,25 +30,21 @@ interface SampleButtonProps {
  * Primary UI component for user interaction
  */
 export const SampleButton = ({
-  primary = false,
+  color = 'primary',
   size = 'medium',
   backgroundColor,
   label,
-  ...props
+  onClick
 }: SampleButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
   return (
-    <button
-      type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      {...props}
+    <Button
+      variant="contained"
+      color={color}
+      size={size}
+      style={{ backgroundColor }}
+      onClick={onClick}
     >
       {label}
-      <style jsx>{`
-        button {
-          background-color: ${backgroundColor};
-        }
-      `}</style>
-    </button>
+    </Button>
   );
 };

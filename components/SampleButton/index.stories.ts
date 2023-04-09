@@ -20,13 +20,14 @@ type Story = StoryObj<typeof SampleButton>;
 // More on writing stories with args: https://storybook.js.org/docs/7.0/react/writing-stories/args
 export const Primary: Story = {
   args: {
-    primary: true,
+    color: 'primary',
     label: 'Button',
   },
 };
 
 export const Secondary: Story = {
   args: {
+    color: 'secondary',
     label: 'Button',
   },
 };

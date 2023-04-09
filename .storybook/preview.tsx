@@ -1,5 +1,15 @@
 import type { Preview } from "@storybook/react";
+import {ThemeProvider} from "@mui/material";
+import theme from "../theme";
 import '../styles/globals.css';
+
+export const decorators = [
+  (Story) => (
+    <ThemeProvider theme={theme}>
+      <Story />
+    </ThemeProvider>
+  )
+];
 
 const preview: Preview = {
   parameters: {
